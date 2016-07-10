@@ -98,9 +98,7 @@ function postImage(imgurl) {
   while (probs[i] > 0.8 && i < probs.length) {i++;
     console.log(probs[i]);
   }
-  tags = tags.slice(0,i);*/
-  document.getElementById('tags').innerHTML = tags.toString().replace(/,/g, ', ');
-  
+  tags = tags.slice(0,i);*/  
   textToSpeechImageTags(tags);
   return tags;
 }
