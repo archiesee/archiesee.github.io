@@ -1,19 +1,19 @@
 $( document ).ready(function() {
   console.log("hello world");
-  // // permissions
-  // navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
-  // if (navigator.getUserMedia) {
-  //   navigator.getUserMedia(
-  //      {
-  //         video:false,
-  //         audio:true
-  //      },
-  //      function(stream) { /* do something */ },
-  //      function(error) { /* do something */ }
-  //   );
-  // } else {
-  //   alert('Sorry, the browser you are using doesn\'t support getUserMedia');
-  // }
+  // permissions
+  navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+  if (navigator.getUserMedia) {
+    navigator.getUserMedia(
+       {
+          video:false,
+          audio:true
+       },
+       function(stream) { /* do something */ },
+       function(error) { /* do something */ }
+    );
+  } else {
+    alert('Sorry, the browser you are using doesn\'t support getUserMedia');
+  }
 
   var audio = new Audio('ding.mp3');
   var end = new Audio('woosh.mp3');
@@ -31,8 +31,7 @@ $( document ).ready(function() {
       console.log("Starting ");  
 
     recognition.onspeechstart = function(event) {
-      // start_timestamp = event.timeStamp;
-    
+      start_timestamp = event.timeStamp;
     };
 
     recognition.onresult = function (event) {
