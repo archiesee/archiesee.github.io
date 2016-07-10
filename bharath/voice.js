@@ -123,7 +123,7 @@ function takeSnapshot() {
 
   //png by default
   dataURL = photo.toDataURL();
-  dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  dataURL.replace(/^data:image\/png;base64,/, "");
   return dataURL;
   var auth = 'Client-ID ' + clientId;
 }
