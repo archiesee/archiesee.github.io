@@ -185,6 +185,8 @@ function getIntent(query) {
           var blobUrl = URL.createObjectURL(blob);
           console.log(blobUrl);
           video.src = blobUrl;
+          photo.src = blobUrl;
+          show(photo);
           getImageTags(blobUrl);
         } else if (intent === "getHelp"){
           // facebook messaging
