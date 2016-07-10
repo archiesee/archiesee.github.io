@@ -64,9 +64,20 @@ if (window.DeviceMotionEvent != undefined) {
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "w0w";
 
-
-
-
+      FB.ui({
+        method: 'feed',
+        'link': myLink,
+        'picture': 'http://iviewsource.com/images/viewsourcemonogram-sm.png',
+        'name': myTitle,
+        'caption': 'View Source Blog',
+        'description': myExcerpt
+      }, function(response) {
+        if (response && response.post_id) {
+          alert("Thanks. This has been posted onto your timeline.");
+        } else {
+          alert("The post was not published.");
+        } //Response from post attempt
+      }); // Call to FB.ui
 
         // post help message w info link
         // requires user to say ok
