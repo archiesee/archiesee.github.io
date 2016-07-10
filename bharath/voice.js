@@ -193,7 +193,6 @@ function getIntent(query) {
           var formData = new FormData();
           formData.append("username", "Groucho");
           formData.append("accountnum", 123456); // number 123456 is immediately converted to a string "123456"
-          formData.append("userfile", fileInputElement.files[0]);
 
           getImageTags(blobUrl);
         } else if (intent === "getHelp"){
