@@ -28,6 +28,7 @@ test: <span id="test"></span>
 </div>
 
 <script>
+function speak() {
     if ('speechSynthesis' in window) {
     var sentence = new SpeechSynthesisUtterance();
     var voices = window.speechSynthesis.getVoices();
@@ -44,6 +45,7 @@ test: <span id="test"></span>
   } else {
     window.alert("Oops! Your browser does not support HTML SpeechSynthesis.");
   }
+}
 </script>
 
 <script>
@@ -80,7 +82,7 @@ if (window.DeviceMotionEvent != undefined) {
     // detects when the user falls using free fall
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "i should";
-
+      speak();
         // post help message w info link
         // requires user to say ok
         FB.ui({
