@@ -2,15 +2,28 @@
 <html lang="en">
 <head>
   <title>Archie - Helping the Blind See the World</title>
-<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-	<script src="voice.js"></script>
-	<script src="https://npmcdn.com/axios/dist/axios.min.js"></script>
-	<script type="text/javascript" src="keys.js"></script>
-	<script type="text/javascript" src="clarifai.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<img src="dog.png" height="200" width="200" class="centered" onclick="textToVoice()">
+    <div id="videoCanvas">
+    <video id="camera" autoplay></video>
+    <canvas id="photo" ></canvas>
+    
+  </div>
+          <canvas id="tiny" width="10" height ="10"> </canvas>
+
+  <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="voice.js"></script>
+    <script src="https://npmcdn.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="keys.js"></script>
+    <script type="text/javascript" src="clarifai.js"></script>
+<!--   <div>
+    <input type="text" id="imgurl" placeholder="Image URL"/>
+    <button onclick="run(document.getElementById('imgurl').value)">Get tags!</button>
+  </div> 
+  <div id="tags"></div> -->
+
 
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
