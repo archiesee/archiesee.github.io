@@ -85,14 +85,14 @@ function speak() {
 var x = 0, y = 0,
     vx = 0, vy = 0,
   ax = 0, ay = 0;
+
 var i = 1;
-var latitude;
-var longitude;
+var location_coords = {lat: "", lon: ""};
 
 function showPosition(position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-  }
+  location_coords.lat = position.coords.latitude;
+  location_coords.lon = position.coords.longitude;  
+}
 
 if (window.DeviceMotionEvent != undefined) {
   window.ondevicemotion = function(e) {
@@ -116,8 +116,8 @@ if (window.DeviceMotionEvent != undefined) {
 
         emailjs.init("user_IJpoXBYOn5233GTxFg9dv");
         emailjs.send("gmail","fallen",{
-          lat: latitude, 
-          longi: longitude})
+          lat: location_coords.lat, 
+          longi: location_coords.lon})
         .then(function(response) {
            window.alert("SUCCESS. status=%d, text=%s", response.status, response.text);
         }, function(err) {
