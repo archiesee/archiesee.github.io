@@ -13,12 +13,16 @@
 <body>
 
 <script type="text/javascript">
+function speak() {
 	var audio = new Audio();
 	audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=Hello%20World.';
 	audio.play();
+}
 </script>
 
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+
+<input onclick='speak();' type='button' value='🔊 Play' />
 
 <script>
 responsiveVoice.speak("Welcome to the Responsive Voice website");
