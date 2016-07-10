@@ -1,0 +1,44 @@
+<!--
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Modified from Google Inc.
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="description" content="A seeing-eye webapp for the blind" />
+    <meta name="author" content="Bharath, Rohan, Samhita, and Avi">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta itemprop="name" content="Archie: A seeing-eye mobile-first webapp for the blind">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#fcff1b">
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="asets/css/main.css" />
+
+    <base target="_blank">
+
+    <title>Archie</title>
+  </head>
+
+  <body>
+    <div id="page-wrapper">
+      <div id="videoCanvas">
+        <video id="camera" autoplay></video>
+        <canvas id="photo"></canvas>
+      </div>
+
+      <div id="buttons">
+        <button id="snap">Snap</button><span>
+      </div>
+    </div>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/lib/adapter.js"></script>
+  </body>
+
+</html>
