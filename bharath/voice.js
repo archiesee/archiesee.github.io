@@ -119,17 +119,37 @@ console.log("Begin main js execution");
 navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 function takeSnapshot() {
-  photoContext.drawImage(video, 0, 0, photo.width, photo.height)
+  photoContext.drawImage(video, 0, 0, photo.width, photo.height);
 
   //png by default
-  dataURL = photo.toDataURL()
-  console.log(dataURL)
-  dataURL = dataURL.replace(/^data:image\/png;base64,/, "")
-  console.log(dataURL)
-  return dataURL
-  var auth = 'Client-ID ' + clientId;
+  dataURL = photo.toDataURL();
+  dataURL = dataURL.replace(/^data:image\/png;base64,/, "");
+  return dataURL;
 }
 
+function b64toBlob(b64Data, contentType, sliceSize) {
+  contentType = contentType || '';
+  sliceSize = sliceSize || 512;
+
+  var byteCharacters = atob(b64Data);
+  var byteArrays = [];
+
+  for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+    var byteNumbers = new Array(slice.length);
+    for (var i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+
+    var byteArray = new Uint8Array(byteNumbers);
+
+    byteArrays.push(byteArray);
+  }
+
+  var blob = new Blob(byteArrays, {type: contentType});
+  return blob;
+}
 
 // extract an intent
 var accessToken = "18e3e0c1d11c4d209fb83af7e3bee9ae";
@@ -157,10 +177,14 @@ function getIntent(query) {
           console.log("describing the surroundings");
           // get url of image
           // Bharath's code
-          var URL = takeSnapshot();
-          console.log(URL);
+          var b64Data = takeSnapshot();
           // getSurroundingContext();
-          getImageTags(URL);
+          var contentType = 'image/png';
+
+          var blob = b64toBlob(b64Data, contentType);
+          var blobUrl = URL.createObjectURL(blob);
+          console.log(blobUrl);
+          getImageTags(blobUrl);
         } else if (intent === "getHelp"){
           // facebook messaging
           // Samhita, add your code here
