@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta property="og:url" content="http://archiesee.github.io/detect_fall.html"/>
+  <meta property="og:title" content="tracking.js - tag friends"/>
+  <meta property="og:type" content="website" />
+  <title>tracking.js - tag friends</title>
+  <link rel="stylesheet" href="assets/demo.css">
+
+</head>
+
+<body>
+
+<script type="text/javascript">
+function speak() {
+	var audio = new Audio();
+	audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=Hello%20World.';
+	audio.play();
+}
+</script>
+
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+
+<input onclick='speak();' type='button' value='🔊 Play' />
+
+<script>
+responsiveVoice.speak("Welcome to the Responsive Voice website");
+</script>
+
+
+
+</body>
+</html>
