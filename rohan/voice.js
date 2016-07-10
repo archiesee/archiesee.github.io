@@ -118,19 +118,17 @@ function getIntent(query) {
           console.log("describing the surroundings");
           // get url of image
           // Bharath's code
-          textToVoice("seeing things");
           //prompt = "seeing things"
+          textToVoice("There is a crowd of people");
           var URL = 'https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png';
           // getSurroundingContext();
           getImageTags(URL);
         } else if (intent === "getHelp"){
           // facebook messaging
-          textToVoice("getting help");
           //prompt = "Sent email for help";
           console.log("getting you help");
         } else if (intent === "whoIsThere"){
           // facebook face tagging
-          textToVoice("Barry");
           //prompt = "Barry is there"
           console.log("telling you who is around");
         }
