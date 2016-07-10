@@ -31,12 +31,14 @@ test: <span id="test"></span>
   function speak() {
     // Create a new instance of SpeechSynthesisUtterance.
     var msg = new SpeechSynthesisUtterance();
+    var voices = window.speechSynthesis.getVoices();
   
-    // Set the text.
     msg.text = "Hello world!";
-  
-    // Set the attributes.
-    msg.volume = 10;
+    msg.pitch = 1;
+    msg.volume = 0.5;
+    msg.lang = 'en-US';
+    msg.rate = 1;
+
   
     // Queue this utterance.
     window.speechSynthesis.speak(msg);
