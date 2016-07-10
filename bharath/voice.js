@@ -91,6 +91,40 @@ $( document ).ready(function() {
   }
 });
 
+console.log("Begin video capture");
+
+//video stream variables
+var constraints = {
+  audio: true,
+  video: true
+};
+var video = document.querySelector('video');
+var photo = document.getElementById('photo');
+var photoContext = photo.getContext('2d');
+var dataURL;
+
+//permissions code
+navigator.getUserMedia = navigator.getUserMedia ||
+    navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+function successCallback(stream) {
+}
+
+function errorCallback(error) {
+  console.log('navigator.getUserMedia error: ', error);
+}
+
+function takeSnapshot() {
+  photoContext.drawImage(video, 0, 0, photo.width, photo.height);
+
+  //png by default
+  dataURL = photo.toDataURL();
+  dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  return dataURL;
+  var auth = 'Client-ID ' + clientId;
+}
+
+
 // extract an intent
 var accessToken = "18e3e0c1d11c4d209fb83af7e3bee9ae";
 var subscriptionKey = "9fd0e7e0e29844729d1da6516e8cc3b7";

@@ -33,7 +33,7 @@ function takeSnapshot() {
   dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   return dataURL;
   var auth = 'Client-ID ' + clientId;
-
+}
   /*$.ajax({
     url: 'https://api.imgur.com/3/image',
     headers: {
@@ -69,4 +69,3 @@ function takeSnapshot() {
 }).error(function() {
     alert('Could not reach api.imgur.com. Sorry :(');
 });*/
-}
