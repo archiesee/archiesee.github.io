@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  console.log("hello world 1");
+  console.log("hello world 123");
   // permissions
   navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   if (navigator.getUserMedia) {
@@ -48,7 +48,7 @@ $( document ).ready(function() {
             lucyTimer = setTimeout(function(){ lucyActivated = false;}, 10000);
             // intent = getIntent(event.results[i][0].transcript);
           } else if(event.results[i][0].transcript == "Archie"){
-            console.log("Lucy Was Called!");
+            console.log("Archie Was Called!");
             audio.play();
             lucyActivated = true;
             toggle = true;
