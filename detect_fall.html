@@ -62,7 +62,7 @@ if (window.DeviceMotionEvent != undefined) {
     document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
     // detects when the user falls using free fall
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
-      document.getElementById("changethis").innerHTML = "i should speak now";
+      document.getElementById("changethis").innerHTML = "i sho";
 
 
       if ('speechSynthesis' in window) {
