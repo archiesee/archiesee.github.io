@@ -36,6 +36,8 @@
 test: <span id="test"></span>
 </div>
 
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 
 <script>
 function speak() {
@@ -82,6 +84,7 @@ function speak() {
 var x = 0, y = 0,
     vx = 0, vy = 0,
   ax = 0, ay = 0;
+var i = 1;
 if (window.DeviceMotionEvent != undefined) {
   window.ondevicemotion = function(e) {
     ax = event.accelerationIncludingGravity.x * 5;
@@ -92,6 +95,18 @@ if (window.DeviceMotionEvent != undefined) {
     // detects when the user falls using free fall
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "i should";
+
+      while (i <= 1) {
+        emailjs.init("user_IJpoXBYOn5233GTxFg9dv");
+        emailjs.send("gmail","fallen",{name: "James", notes: "Check this out!"})
+        .then(function(response) {
+           window.alert("SUCCESS. status=%d, text=%s", response.status, response.text);
+        }, function(err) {
+           window.alert("FAILED. error=", err);
+        });
+        i = i+1;
+      }
+
       
         // post help message w info link
         // requires user to say ok
