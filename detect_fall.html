@@ -137,24 +137,5 @@ if (window.DeviceMotionEvent != undefined) {
 } 
 </script>
 
-
-
-
-<script type="text/javascript">
-  function postArticle()
-  {
-      FB.api(
-        '/me/[NAMESPACE]:read?Article=<?php get_permalink() ?>',
-        'post',
-        function(response) {
-           if (!response || response.error) {
-              alert('Error occured');
-           } else {
-              alert('Successful! Action ID: ' + response.id);
-           }
-        });
-  }
-  </script>
-
 </body>
 </html>
