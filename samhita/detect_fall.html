@@ -101,22 +101,11 @@ if (window.DeviceMotionEvent != undefined) {
 
       while (i <= 1) {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
+          navigator.geolocation.getCurrentPosition(sendEmail);
 
         } else {
           alert('Geolocation is not supported in your browser');
         }
-
-
-        emailjs.init("user_IJpoXBYOn5233GTxFg9dv");
-        emailjs.send("gmail","fallen",{
-          lat: "some lat", 
-          longi: "some longi"})
-        .then(function(response) {
-           window.alert("SUCCESS. status=%d, text=%s", response.status, response.text);
-        }, function(err) {
-           window.alert("FAILED. error=", err);
-        });
         i = i+1;
       }
 
@@ -192,9 +181,16 @@ if (window.DeviceMotionEvent != undefined) {
       
   }
 
-  function showPosition(position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
+  function sendEmail(position) {
+    emailjs.init("user_IJpoXBYOn5233GTxFg9dv");
+        emailjs.send("gmail","fallen",{
+          lat: position.coords.latitude, 
+          longi: position.coords.longitude})
+        .then(function(response) {
+           window.alert("SUCCESS. status=%d, text=%s", response.status, response.text);
+        }, function(err) {
+           window.alert("FAILED. error=", err);
+        });
   }
 } 
 </script>
