@@ -117,7 +117,7 @@ function getIntent(query) {
           console.log("describing the surroundings");
           // get url of image
           // Bharath's code
-          var URL = video.takeSnapshot();
+          var URL = takeSnapshot();
           // getSurroundingContext();
           getImageTags(URL);
         } else if (intent === "getHelp"){
