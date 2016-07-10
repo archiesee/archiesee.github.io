@@ -29,23 +29,22 @@ test: <span id="test"></span>
 
 <script>
   function speak() {
-    // Create a new instance of SpeechSynthesisUtterance.
+    if ('speechSynthesis' in window) {
     var sentence = new SpeechSynthesisUtterance();
     var voices = window.speechSynthesis.getVoices();
     for(var i = 0; i < voices.length; i++) {
-          if(voices[i]['name'] == "Sara"){
+          if(voices[i]['name'] == "Alex"){
             sentence.voice = voices[i];
           }
       }
     sentence.pitch = 0.5;
     sentence.rate = 1;
-    sentence.text = "Hello World";
+    sentence.text = text;
     window.speechSynthesis.speak(sentence);
-
-  
-    // Queue this utterance.
-    window.speechSynthesis.speak(msg);
+  } else {
+    window.alert("Oops! Your browser does not support HTML SpeechSynthesis.");
   }
+}
 </script>
 
 <script>
