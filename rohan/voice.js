@@ -35,30 +35,29 @@ $( document ).ready(function() {
     recognition.onresult = function (event) {
       var final = "";
       var interim = "";
-      var unactivatedIntent = "";
-      var activatedIntent = "";
+      var intent = "";
 
       for (var i = 0; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
           // log the latest phrase
-          console.log(event.results[i][0].transcript);
+          var latestPhrase = event.results[i][0].transcript
+          console.log(latestPhrase);
 
-          // get intent of phrase
-          unactivatedIntent = getIntent(event.results[i][0].transcript);
-          console.log(unactivatedIntent);
-          console.log(type(unactivatedIntent));
 
           if(lucyActivated){
             clearTimeout(lucyTimer);
-            lucyTimer = setTimeout(function(){ lucyActivated = false;}, 10000);
-            activatedIntent = getIntent(event.results[i][0].transcript);
-            console.log("I'll tell you your surroundings!");
-          } else if(unactivatedIntent.toUpperCase() === "helloArchie".toUpperCase()){
+            lucyTimer = setTimeout(function(){ lucyActivated = false;}, 15000);
+            intent = getIntent(latestPhrase);
+          } else if( (latestPhrase.toUpperCase() === "Archie".toUpperCase()) ||
+              (latestPhrase.toUpperCase() === "Hey Archie".toUpperCase()) ||
+              (latestPhrase.toUpperCase() === "Hello Archie".toUpperCase()) ||
+              (latestPhrase.toUpperCase() === "RT") ||
+              (latestPhrase.toUpperCase() === "What's up Archie".toUpperCase()) ){
             console.log("Archie Was Called!");
             audio.play();
             lucyActivated = true;
             toggle = true;
-            lucyTimer = setTimeout(function(){ lucyActivated = false;}, 10000);
+            lucyTimer = setTimeout(function(){ lucyActivated = false;}, 15000);
           }
           final += event.results[i][0].transcript;
         } else {
@@ -110,13 +109,9 @@ $( document ).ready(function() {
       },
       data: JSON.stringify({ q: query, lang: "en" }),
       success: function(data) {
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-          chrome.tabs.sendMessage(tabs[0].id, {data:data}, function(response) {
-            if(response.type == "test"){
-              console.log('test received');
-            }
-          });
-        });
+        console.log("retrieved intent");
+        console.log(data);
+        console.log(intent);
       },
       error: function() {
         return("Internal Server Error");
