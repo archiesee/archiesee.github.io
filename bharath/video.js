@@ -14,12 +14,6 @@ var photo = document.getElementById('photo');
 var photoContext = photo.getContext('2d');
 var dataURL;
 
-//variables
-var snapBtn = document.getElementById('snap');
-
-//event handlers
-snapBtn.addEventListener('click', takeSnapshot);
-
 //permissions code
 navigator.getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
