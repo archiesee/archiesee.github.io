@@ -40,7 +40,7 @@ $( document ).ready(function() {
       for (var i = 0; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
           // log the latest phrase
-          var latestPhrase = event.results[i][0].transcript
+          var latestPhrase = event.results[i][0].transcript;
           console.log(latestPhrase);
 
 
@@ -114,10 +114,12 @@ $( document ).ready(function() {
         
         if (intent !== ""){
           if (intent === "describeSurroundings"){
-            // do image tagging
-            // Avi, add code here
-            // getSurroundingContext();
             console.log("describing the surroundings");
+            // get url of image
+            // Bharath's code
+            var URL = 'https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png';
+            // getSurroundingContext();
+            getImageTags(URL);
           } else if (intent === "getHelp"){
             // facebook messaging
             // Samhita, add your code here
@@ -135,7 +137,7 @@ $( document ).ready(function() {
     });
   }
 
-  function textToVoice(){
-
+  function textToVoice(prompt){
+    console.log(prompt);
   }
 });

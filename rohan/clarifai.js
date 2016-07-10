@@ -1,3 +1,17 @@
+function getImageTags(imgurl) {
+
+    console.log(imgurl);
+
+  if (Math.floor(Date.now() / 1000) - localStorage.getItem('tokenTimeStamp') > 86400 || localStorage.getItem('accessToken') === null) {
+    getCredentials(function() {
+      postImage(imgurl);
+    });
+  } else {
+    postImage(imgurl);
+  }
+}
+
+
 function getCredentials(cb) {
   var data = {
     'grant_type': 'client_credentials',
@@ -50,31 +64,44 @@ function postImage(imgurl) {
     }
     /*'content-type': 'application/x-www-form-urlencoded'*/
   }).then(function(r) {
-    parseResponse(r.data);
+    console.log(r.data);
+    /*parseResponse(r.data, r.data.results[0].result.tag.probs);
   }, function(err) {
     console.log('Sorry, something is wrong: ' + err);
-  });
+  });*/
+    parseResponse(r.data);
+    }, function(err) {
+      console.log('Sorry, something is wrong: ' + err);
+    });
 }
-
-function parseResponse(resp) {
+//function parseResponse(resp, probs) {
+  function parseResponse(resp){
   var tags = [];
   if (resp.status_code === 'OK') {
     var results = resp.results;
     tags = results[0].result.tag.classes;
+
+    numTagsOutputted = 3;
+    if (tags.length < numTagsOutputted)
+      numTagsOutputted = tags.length;
+    var prompt = "Ahead I see";
+    for (var i = 0; i < numTagsOutputted; i++) {
+      prompt += ", " + tags[i];
+    }
+
+    textToVoice(prompt);
+
   } else {
     console.log('Sorry, something is wrong.');
   }
-
+/*  var i = 0;
+  while (probs[i] > 0.8 && i < probs.length) {i++;
+    console.log(probs[i]);
+  }
+  tags = tags.slice(0,i);*/
   document.getElementById('tags').innerHTML = tags.toString().replace(/,/g, ', ');
+  
+  textToSpeechImageTags(tags);
   return tags;
 }
 
-function run(imgurl) {
-  if (Math.floor(Date.now() / 1000) - localStorage.getItem('tokenTimeStamp') > 86400 || localStorage.getItem('accessToken') === null) {
-    getCredentials(function() {
-      postImage(imgurl);
-    });
-  } else {
-    postImage(imgurl);
-  }
-}
