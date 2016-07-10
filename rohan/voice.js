@@ -28,7 +28,7 @@ $( document ).ready(function() {
     var final_transcript = '';
     var interim_transcript = '';
     recognition.start();
-    
+
     recognition.onspeechstart = function(event) {
       start_timestamp = event.timeStamp;
     };
@@ -62,7 +62,6 @@ $( document ).ready(function() {
     };
 
     recognition.onend = function() {
-      console.log("ending");
       recognition.start();
     };
 
