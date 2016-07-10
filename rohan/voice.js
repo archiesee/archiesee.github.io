@@ -125,6 +125,7 @@ function getIntent(query) {
         } else if (intent === "getHelp"){
           // facebook messaging
           //prompt = "Sent email for help";
+          textToVoice("Getting you help");
           console.log("getting you help");
         } else if (intent === "whoIsThere"){
           // facebook face tagging
