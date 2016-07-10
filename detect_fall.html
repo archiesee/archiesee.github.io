@@ -64,6 +64,10 @@ if (window.DeviceMotionEvent != undefined) {
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "w0w";
 
+      var su = new SpeechSynthesisUtterance();
+      su.lang = "en";
+      su.text = "Hello World";
+      SpeechSynthesis.speak(su);
         // post help message w info link
         // requires user to say ok
         FB.ui({
