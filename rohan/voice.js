@@ -95,6 +95,7 @@ $( document ).ready(function() {
 var accessToken = "18e3e0c1d11c4d209fb83af7e3bee9ae";
 var subscriptionKey = "9fd0e7e0e29844729d1da6516e8cc3b7";
 var baseUrl = "https://api.api.ai/v1/";
+var prompt = "Hello World";
 
 function getIntent(query) {
   console.log(query);
@@ -122,11 +123,11 @@ function getIntent(query) {
           getImageTags(URL);
         } else if (intent === "getHelp"){
           // facebook messaging
-          // Samhita, add your code here
+          prompt = "Sent email for help";
           console.log("getting you help");
         } else if (intent === "whoIsThere"){
           // facebook face tagging
-          // Samhita, add your code here 
+          prompt = "Barry is there"
           console.log("telling you who is around");
         }
       }
@@ -137,6 +138,23 @@ function getIntent(query) {
   });
 }
 
-function textToVoice(prompt){
+function textToVoice(){
   console.log(prompt);
+
+  if ('speechSynthesis' in window) {
+      var sentence = new SpeechSynthesisUtterance();
+      var voices = window.speechSynthesis.getVoices();
+      for(var i = 0; i < voices.length; i++) {
+            if(voices[i]['name'] == "Alex"){
+              sentence.voice = voices[i];
+            }
+        }
+      sentence.pitch = 0.5;
+      sentence.rate = 1;
+      sentence.volume = 10;
+      sentence.text = prompt;
+      window.speechSynthesis.speak(sentence);
+    } else {
+      window.alert("Oops! Your browser does not support HTML SpeechSynthesis.");
+    }
 }
