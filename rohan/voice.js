@@ -95,7 +95,7 @@ $( document ).ready(function() {
 var accessToken = "18e3e0c1d11c4d209fb83af7e3bee9ae";
 var subscriptionKey = "9fd0e7e0e29844729d1da6516e8cc3b7";
 var baseUrl = "https://api.api.ai/v1/";
-var prompt = "Hello World";
+//var prompt = "Hello World";
 
 function getIntent(query) {
   console.log(query);
@@ -118,17 +118,20 @@ function getIntent(query) {
           console.log("describing the surroundings");
           // get url of image
           // Bharath's code
-          prompt = "seeing things"
+          textToVoice("seeing things");
+          //prompt = "seeing things"
           var URL = 'https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png';
           // getSurroundingContext();
           getImageTags(URL);
         } else if (intent === "getHelp"){
           // facebook messaging
-          prompt = "Sent email for help";
+          textToVoice("getting help");
+          //prompt = "Sent email for help";
           console.log("getting you help");
         } else if (intent === "whoIsThere"){
           // facebook face tagging
-          prompt = "Barry is there"
+          textToVoice("Barry");
+          //prompt = "Barry is there"
           console.log("telling you who is around");
         }
       }
@@ -139,7 +142,7 @@ function getIntent(query) {
   });
 }
 
-function textToVoice(){
+function textToVoice(prompt){
   console.log(prompt);
 
   if ('speechSynthesis' in window) {
