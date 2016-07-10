@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-  console.log("hello world");
+  console.log("hello world 1");
   // permissions
   navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   if (navigator.getUserMedia) {
@@ -28,8 +28,7 @@ $( document ).ready(function() {
     var final_transcript = '';
     var interim_transcript = '';
     recognition.start();
-      console.log("Starting ");  
-
+    
     recognition.onspeechstart = function(event) {
       start_timestamp = event.timeStamp;
     };
@@ -63,6 +62,7 @@ $( document ).ready(function() {
     };
 
     recognition.onend = function() {
+      console.log("ending");
       recognition.start();
     };
 
