@@ -9,7 +9,16 @@
   <link rel="stylesheet" href="assets/demo.css">
 
 </head>
+
+
+
 <body onload="handleAuth();">
+
+ <div> 
+    <img src="assets/img/logo_dog.png" width="900" height="1800" onclick="speak();" />
+</div>
+
+
   <div class="template">
     <p>Fall: <span id="changethis"></span></p>
   </div>
@@ -27,7 +36,9 @@
 test: <span id="test"></span>
 </div>
 
+
 <script>
+function speak() {
     if ('speechSynthesis' in window) {
     var sentence = new SpeechSynthesisUtterance();
     var voices = window.speechSynthesis.getVoices();
@@ -44,6 +55,7 @@ test: <span id="test"></span>
   } else {
     window.alert("Oops! Your browser does not support HTML SpeechSynthesis.");
   }
+}
 </script>
 
 <script>
@@ -80,15 +92,15 @@ if (window.DeviceMotionEvent != undefined) {
     // detects when the user falls using free fall
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "i should";
-
+      
         // post help message w info link
         // requires user to say ok
-        FB.ui({
-           method: 'share',
-           mobile_iframe: true,
-           quote: 'I feel and I need help',
-           href: 'http://www.health.gov.au/internet/publications/publishing.nsf/Content/dff-toc~dff-surroundings~dff-surroundings-getup'
-        }, function(response){});
+        // FB.ui({
+        //    method: 'share',
+        //    mobile_iframe: true,
+        //    quote: 'I feel and I need help',
+        //    href: 'http://www.health.gov.au/internet/publications/publishing.nsf/Content/dff-toc~dff-surroundings~dff-surroundings-getup'
+        // }, function(response){});
         
       }
     // rotation rate and orientation
