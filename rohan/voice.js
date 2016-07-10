@@ -47,7 +47,7 @@ $( document ).ready(function() {
           if(lucyActivated){
             clearTimeout(lucyTimer);
             lucyTimer = setTimeout(function(){ lucyActivated = false;}, 15000);
-            intent = getIntent(latestPhrase);
+            getIntent(latestPhrase);
           } else if( (latestPhrase.toUpperCase() === "Archie".toUpperCase()) ||
               (latestPhrase.toUpperCase() === "Hey Archie".toUpperCase()) ||
               (latestPhrase.toUpperCase() === "Hello Archie".toUpperCase()) ||
@@ -110,8 +110,22 @@ $( document ).ready(function() {
       data: JSON.stringify({ q: query, lang: "en" }),
       success: function(data) {
         console.log("retrieved intent");
-        console.log(data);
-        console.log(data.result.metadata.intentName);
+        intent = data.result.metadata.intentName;
+        
+        if (intent === "describeSurroundings"){
+          // do image tagging
+          // Avi, add code here
+          // getSurroundingContext();
+          console.log("describing the surroundings");
+        } else if (intent === "getHelp"){
+          // facebook messaging
+          // Samhita, add your code here
+          console.log("getting you help");
+        } else if (intent === "whoIsThere"){
+          // facebook face tagging
+          // Samhita, add your code here 
+          console.log("telling you who is around");
+        }
       },
       error: function() {
         return("Internal Server Error");
