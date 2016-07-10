@@ -30,10 +30,8 @@ test: <span id="test"></span>
 <script>
   function speak() {
     // Create a new instance of SpeechSynthesisUtterance.
-    var msg = new SpeechSynthesisUtterance();
-    var voices = window.speechSynthesis.getVoices();
-  
-    msg.text = "Hello world!";
+    var msg = new SpeechSynthesisUtterance('Hello world!');
+
     msg.pitch = 1;
     msg.volume = 0.5;
     msg.lang = 'en-US';
