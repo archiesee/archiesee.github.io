@@ -123,7 +123,7 @@ function takeSnapshot() {
 
   //png by default
   dataURL = photo.toDataURL();
-  dataURL.replace(/^data:image\/png;base64,/, "");
+  dataURL = dataURL.replace(/^data:image\/png;base64,/, "");
   return dataURL;
   var auth = 'Client-ID ' + clientId;
 }
@@ -156,6 +156,7 @@ function getIntent(query) {
           // get url of image
           // Bharath's code
           var URL = takeSnapshot();
+          console.log(URL);
           // getSurroundingContext();
           getImageTags(URL);
         } else if (intent === "getHelp"){
