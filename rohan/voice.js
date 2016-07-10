@@ -118,6 +118,7 @@ function getIntent(query) {
           console.log("describing the surroundings");
           // get url of image
           // Bharath's code
+          prompt = "seeing things"
           var URL = 'https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png';
           // getSurroundingContext();
           getImageTags(URL);
