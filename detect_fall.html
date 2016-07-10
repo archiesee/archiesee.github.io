@@ -27,7 +27,11 @@
 test: <span id="test"></span>
 </div>
 
-
+<script>
+  var msg = new SpeechSynthesisUtterance('Hello World');
+  msg.volume = 10;
+  window.speechSynthesis.speak(msg);
+</script>
 
 <script>
   window.fbAsyncInit = function() {
@@ -64,9 +68,7 @@ if (window.DeviceMotionEvent != undefined) {
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "i sho";
 
-      var msg = new SpeechSynthesisUtterance('Hello World');
-      msg.volume = 10;
-      window.speechSynthesis.speak(msg);
+
         // post help message w info link
         // requires user to say ok
         FB.ui({
