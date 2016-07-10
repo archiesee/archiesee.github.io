@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-  console.log("hello world 123");
   // permissions
   navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   if (navigator.getUserMedia) {
@@ -36,18 +35,22 @@ $( document ).ready(function() {
     recognition.onresult = function (event) {
       var final = "";
       var interim = "";
-      var intent = "";
+      var unactivatedIntent = "";
+      var activatedIntent = "";
 
       for (var i = 0; i < event.results.length; ++i) {
         if (event.results[i].isFinal) {
           // log the latest phrase
           console.log(event.results[i][0].transcript);
 
+          // get intent of phrase
+          unactivatedIntent = getIntent(event.results[i][0].transcript);
+
           if(lucyActivated){
             clearTimeout(lucyTimer);
             lucyTimer = setTimeout(function(){ lucyActivated = false;}, 10000);
-            // intent = getIntent(event.results[i][0].transcript);
-          } else if(event.results[i][0].transcript == "Archie"){
+            activatedIntent = getIntent(event.results[i][0].transcript);
+          } else if(unactivatedIntent.toUpperCase() === "helloArchie".toUpperCase()){
             console.log("Archie Was Called!");
             audio.play();
             lucyActivated = true;
@@ -86,35 +89,35 @@ $( document ).ready(function() {
     };
   }
 
-//   // extract an intent
-//   var accessToken = "cfa415db33e24195927987711addac1c";
-//   var subscriptionKey = "d0426b7da80d43b49c635e746ebd80df";
-//   var baseUrl = "https://api.api.ai/v1/";
+  // extract an intent
+  var accessToken = "18e3e0c1d11c4d209fb83af7e3bee9ae";
+  var subscriptionKey = "9fd0e7e0e29844729d1da6516e8cc3b7";
+  var baseUrl = "https://api.api.ai/v1/";
 
-//   function getIntent(query) {
-//     console.log(query);
-//     $.ajax({
-//       type: "POST",
-//       url: baseUrl + "query/",
-//       contentType: "application/json; charset=utf-8",
-//       dataType: "json",
-//       headers: {
-//         "Authorization": "Bearer " + accessToken,
-//         "ocp-apim-subscription-key": subscriptionKey
-//       },
-//       data: JSON.stringify({ q: query, lang: "en" }),
-//       success: function(data) {
-//         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-//           chrome.tabs.sendMessage(tabs[0].id, {data:data}, function(response) {
-//             if(response.type == "test"){
-//               console.log('test received');
-//             }
-//           });
-//         });
-//       },
-//       error: function() {
-//         return("Internal Server Error");
-//       }
-//     });
-//   }
+  function getIntent(query) {
+    console.log(query);
+    $.ajax({
+      type: "POST",
+      url: baseUrl + "query/",
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      headers: {
+        "Authorization": "Bearer " + accessToken,
+        "ocp-apim-subscription-key": subscriptionKey
+      },
+      data: JSON.stringify({ q: query, lang: "en" }),
+      success: function(data) {
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+          chrome.tabs.sendMessage(tabs[0].id, {data:data}, function(response) {
+            if(response.type == "test"){
+              console.log('test received');
+            }
+          });
+        });
+      },
+      error: function() {
+        return("Internal Server Error");
+      }
+    });
+  }
 });
