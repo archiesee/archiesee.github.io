@@ -111,7 +111,7 @@ $( document ).ready(function() {
       success: function(data) {
         console.log("retrieved intent");
         console.log(data);
-        console.log(intent);
+        console.log(intent.result);
       },
       error: function() {
         return("Internal Server Error");
