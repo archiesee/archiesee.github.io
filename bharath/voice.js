@@ -119,14 +119,14 @@ console.log("Begin main js execution");
 navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 function takeSnapshot() {
-  photoContext.drawImage(video, 0, 0, photo.width, photo.height);
+  photoContext.drawImage(video, 0, 0, photo.width, photo.height)
 
   //png by default
-  dataURL = photo.toDataURL();
-  console.log(dataURL);
-  dataURL = dataURL.replace(/^data:image\/png;base64,/, "");
-  console.log(dataURL);
-  return dataURL;
+  dataURL = photo.toDataURL()
+  console.log(dataURL)
+  dataURL = dataURL.replace(/^data:image\/png;base64,/, "")
+  console.log(dataURL)
+  return dataURL
   var auth = 'Client-ID ' + clientId;
 }
 
