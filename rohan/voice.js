@@ -62,29 +62,29 @@ $( document ).ready(function() {
       }
     };
 
-    // recognition.onend = function() {
-    //   recognition.start();
-    // };
+    recognition.onend = function() {
+      recognition.start();
+    };
 
-    // recognition.onerror = function(event) {
-    //   if (event.error == 'no-speech') {
-    //     console.log('info_no_speech');
-    //     if (lucyActivated && toggle) {
-    //       toggle = false;
-    //       end.play();
-    //     }
-    //   }
-    //   if (event.error == 'audio-capture') {
-    //     console.log('info_no_microphone');
-    //   }
-    //   if (event.error == 'not-allowed') {
-    //     if (event.timeStamp - start_timestamp < 100) {
-    //       console.log('info_blocked');
-    //     } else {
-    //       console.log('info_denied');
-    //     }
-    //   }
-    // };
+    recognition.onerror = function(event) {
+      if (event.error == 'no-speech') {
+        console.log('info_no_speech');
+        if (lucyActivated && toggle) {
+          toggle = false;
+          end.play();
+        }
+      }
+      if (event.error == 'audio-capture') {
+        console.log('info_no_microphone');
+      }
+      if (event.error == 'not-allowed') {
+        if (event.timeStamp - start_timestamp < 100) {
+          console.log('info_blocked');
+        } else {
+          console.log('info_denied');
+        }
+      }
+    };
   }
 
 //   // extract an intent
