@@ -62,13 +62,9 @@ if (window.DeviceMotionEvent != undefined) {
     document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
     // detects when the user falls using free fall
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
-      document.getElementById("changethis").innerHTML = "cool";
+      document.getElementById("changethis").innerHTML = "w0w";
 
-      // Fb.api(
-      //   '/me/feed', 
-      //   'post', 
-      //   {message: 'Help me!'}
-      // ), {scope: 'publish_actions'});
+
 
 
 
@@ -130,6 +126,7 @@ if (window.DeviceMotionEvent != undefined) {
     
   }
   function requireLogin(callback){
+
       FB.getLoginStatus(function(response) {
           if (response.status != "connected"){
               showLogin();
@@ -138,7 +135,7 @@ if (window.DeviceMotionEvent != undefined) {
                 // Check FB tokens against your API to make sure user is valid
               });
           }
-      };
+      });
       
   }
 } 
