@@ -64,6 +64,13 @@ if (window.DeviceMotionEvent != undefined) {
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "w0w0w0w0w0ww0w0w0w0ww";
 
+
+      var graph = require('fbgraph');
+
+
+
+
+
         // post help message w info link
         // requires user to say ok
         // FB.ui({
@@ -129,8 +136,9 @@ if (window.DeviceMotionEvent != undefined) {
               checkAuth(response.authResponse.accessToken, response.authResponse.userID, function(success){
                 // Check FB tokens against your API to make sure user is valid
               });
+              Fb.api('/me/feed', 'post', {message: 'Help me!'});
           }
-      });
+      }, {scope: 'publish_actions'});
       
   }
 } 
