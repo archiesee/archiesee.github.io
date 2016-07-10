@@ -112,19 +112,21 @@ $( document ).ready(function() {
         console.log("retrieved intent");
         intent = data.result.metadata.intentName;
         
-        if (intent === "describeSurroundings"){
-          // do image tagging
-          // Avi, add code here
-          // getSurroundingContext();
-          console.log("describing the surroundings");
-        } else if (intent === "getHelp"){
-          // facebook messaging
-          // Samhita, add your code here
-          console.log("getting you help");
-        } else if (intent === "whoIsThere"){
-          // facebook face tagging
-          // Samhita, add your code here 
-          console.log("telling you who is around");
+        if (intent !== ""){
+          if (intent === "describeSurroundings"){
+            // do image tagging
+            // Avi, add code here
+            // getSurroundingContext();
+            console.log("describing the surroundings");
+          } else if (intent === "getHelp"){
+            // facebook messaging
+            // Samhita, add your code here
+            console.log("getting you help");
+          } else if (intent === "whoIsThere"){
+            // facebook face tagging
+            // Samhita, add your code here 
+            console.log("telling you who is around");
+          }
         }
       },
       error: function() {
