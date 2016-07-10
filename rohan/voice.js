@@ -124,12 +124,10 @@ function getIntent(query) {
           getImageTags(URL);
         } else if (intent === "getHelp"){
           // facebook messaging
-          //prompt = "Sent email for help";
-          textToVoice("Getting you help");
+          textToVoice("Sent email for help");
           console.log("getting you help");
         } else if (intent === "whoIsThere"){
           // facebook face tagging
-          //prompt = "Barry is there"
           console.log("telling you who is around");
         }
       }
