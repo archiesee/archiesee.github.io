@@ -118,9 +118,7 @@ if (window.DeviceMotionEvent != undefined) {
         emailjs.send("gmail","fallen",{
           lat: String(location_coords.lat), 
           longi: String(location_coords.lon)})
-        .then(function(response) {
-           window.alert("SUCCESS. status=%d, text=%s", response.status, response.text);
-        }, function(err) {
+        .then(function(response) {}, function(err) {
            window.alert("FAILED. error=", err);
         });
         i = i+1;
