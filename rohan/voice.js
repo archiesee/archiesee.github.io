@@ -134,4 +134,8 @@ $( document ).ready(function() {
       }
     });
   }
+
+  function textToVoice(){
+
+  }
 });
