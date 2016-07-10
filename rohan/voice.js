@@ -45,6 +45,7 @@ $( document ).ready(function() {
 
           // get intent of phrase
           unactivatedIntent = getIntent(event.results[i][0].transcript);
+          console.log(unactivatedIntent);
 
           if(lucyActivated){
             clearTimeout(lucyTimer);
