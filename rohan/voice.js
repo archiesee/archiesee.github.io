@@ -43,7 +43,6 @@ $( document ).ready(function() {
           var latestPhrase = event.results[i][0].transcript;
           console.log(latestPhrase);
 
-
           if(lucyActivated){
             clearTimeout(lucyTimer);
             lucyTimer = setTimeout(function(){ lucyActivated = false;}, 15000);
@@ -90,54 +89,54 @@ $( document ).ready(function() {
       }
     };
   }
-
-  // extract an intent
-  var accessToken = "18e3e0c1d11c4d209fb83af7e3bee9ae";
-  var subscriptionKey = "9fd0e7e0e29844729d1da6516e8cc3b7";
-  var baseUrl = "https://api.api.ai/v1/";
-
-  function getIntent(query) {
-    console.log(query);
-    $.ajax({
-      type: "POST",
-      url: baseUrl + "query/",
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      headers: {
-        "Authorization": "Bearer " + accessToken,
-        "ocp-apim-subscription-key": subscriptionKey
-      },
-      data: JSON.stringify({ q: query, lang: "en" }),
-      success: function(data) {
-        console.log("retrieved intent");
-        intent = data.result.metadata.intentName;
-        
-        if (intent !== ""){
-          if (intent === "describeSurroundings"){
-            console.log("describing the surroundings");
-            // get url of image
-            // Bharath's code
-            var URL = 'https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png';
-            // getSurroundingContext();
-            getImageTags(URL);
-          } else if (intent === "getHelp"){
-            // facebook messaging
-            // Samhita, add your code here
-            console.log("getting you help");
-          } else if (intent === "whoIsThere"){
-            // facebook face tagging
-            // Samhita, add your code here 
-            console.log("telling you who is around");
-          }
-        }
-      },
-      error: function() {
-        return("Internal Server Error");
-      }
-    });
-  }
-
-  function textToVoice(prompt){
-    console.log(prompt);
-  }
 });
+
+// extract an intent
+var accessToken = "18e3e0c1d11c4d209fb83af7e3bee9ae";
+var subscriptionKey = "9fd0e7e0e29844729d1da6516e8cc3b7";
+var baseUrl = "https://api.api.ai/v1/";
+
+function getIntent(query) {
+  console.log(query);
+  $.ajax({
+    type: "POST",
+    url: baseUrl + "query/",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    headers: {
+      "Authorization": "Bearer " + accessToken,
+      "ocp-apim-subscription-key": subscriptionKey
+    },
+    data: JSON.stringify({ q: query, lang: "en" }),
+    success: function(data) {
+      console.log("retrieved intent");
+      intent = data.result.metadata.intentName;
+      
+      if (intent !== ""){
+        if (intent === "describeSurroundings"){
+          console.log("describing the surroundings");
+          // get url of image
+          // Bharath's code
+          var URL = 'https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png';
+          // getSurroundingContext();
+          getImageTags(URL);
+        } else if (intent === "getHelp"){
+          // facebook messaging
+          // Samhita, add your code here
+          console.log("getting you help");
+        } else if (intent === "whoIsThere"){
+          // facebook face tagging
+          // Samhita, add your code here 
+          console.log("telling you who is around");
+        }
+      }
+    },
+    error: function() {
+      return("Internal Server Error");
+    }
+  });
+}
+
+function textToVoice(prompt){
+  console.log(prompt);
+}
