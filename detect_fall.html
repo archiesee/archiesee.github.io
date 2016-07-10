@@ -28,9 +28,19 @@ test: <span id="test"></span>
 </div>
 
 <script>
-  var msg = new SpeechSynthesisUtterance('Hello World');
-  msg.volume = 10;
-  window.speechSynthesis.speak(msg);
+  function speak() {
+    // Create a new instance of SpeechSynthesisUtterance.
+    var msg = new SpeechSynthesisUtterance();
+  
+    // Set the text.
+    msg.text = "Hello world!";
+  
+    // Set the attributes.
+    msg.volume = 10;
+  
+    // Queue this utterance.
+    window.speechSynthesis.speak(msg);
+  }
 </script>
 
 <script>
@@ -66,9 +76,8 @@ if (window.DeviceMotionEvent != undefined) {
     document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
     // detects when the user falls using free fall
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
-      document.getElementById("changethis").innerHTML = "i sho";
-
-
+      document.getElementById("changethis").innerHTML = "i should";
+      speak();
         // post help message w info link
         // requires user to say ok
         FB.ui({
