@@ -27,6 +27,8 @@
 test: <span id="test"></span>
 </div>
 
+<div id="button" class="button" width="60" height="100">Button</div>
+
 <script>
 function speak() {
     if ('speechSynthesis' in window) {
@@ -82,15 +84,15 @@ if (window.DeviceMotionEvent != undefined) {
     // detects when the user falls using free fall
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "i should";
-      speak();
+      
         // post help message w info link
         // requires user to say ok
-        FB.ui({
-           method: 'share',
-           mobile_iframe: true,
-           quote: 'I feel and I need help',
-           href: 'http://www.health.gov.au/internet/publications/publishing.nsf/Content/dff-toc~dff-surroundings~dff-surroundings-getup'
-        }, function(response){});
+        // FB.ui({
+        //    method: 'share',
+        //    mobile_iframe: true,
+        //    quote: 'I feel and I need help',
+        //    href: 'http://www.health.gov.au/internet/publications/publishing.nsf/Content/dff-toc~dff-surroundings~dff-surroundings-getup'
+        // }, function(response){});
         
       }
     // rotation rate and orientation
