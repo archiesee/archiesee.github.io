@@ -128,6 +128,7 @@ function getIntent(query) {
           console.log("getting you help");
         } else if (intent === "whoIsThere"){
           // facebook face tagging
+          textToVoice("feature coming");
           console.log("telling you who is around");
         }
       }
