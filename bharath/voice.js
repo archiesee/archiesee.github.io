@@ -190,9 +190,6 @@ function getIntent(query) {
           var blob = b64toBlob(b64Data, contentType);
           var blobUrl = URL.createObjectURL(blob);
           console.log(blobUrl);
-          var formData = new FormData();
-          formData.append("username", "Groucho");
-          formData.append("accountnum", 123456); // number 123456 is immediately converted to a string "123456"
 
           getImageTags(blobUrl);
         } else if (intent === "getHelp"){
