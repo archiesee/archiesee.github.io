@@ -120,7 +120,7 @@ navigator.getUserMedia(constraints, successCallback, errorCallback);
 
 function takeSnapshot() {
   photoContext.drawImage(video, 0, 0, photo.width, photo.height);
-
+  show(photo);
   //png by default
   dataURL = photo.toDataURL();
   dataURL = dataURL.replace(/^data:image\/png;base64,/, "");
@@ -184,9 +184,11 @@ function getIntent(query) {
           var blob = b64toBlob(b64Data, contentType);
           var blobUrl = URL.createObjectURL(blob);
           console.log(blobUrl);
-          video.src = blobUrl;
-          photo.src = blobUrl;
-          show(photo);
+          var formData = new FormData();
+          formData.append("username", "Groucho");
+          formData.append("accountnum", 123456); // number 123456 is immediately converted to a string "123456"
+          formData.append("userfile", fileInputElement.files[0]);
+
           getImageTags(blobUrl);
         } else if (intent === "getHelp"){
           // facebook messaging
@@ -207,4 +209,10 @@ function getIntent(query) {
 
 function textToVoice(prompt){
   console.log(prompt);
+}
+
+function show() {
+  Array.prototype.forEach.call(arguments, function(elem) {
+    elem.style.display = null;
+  });
 }
