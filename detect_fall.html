@@ -63,15 +63,15 @@ if (window.DeviceMotionEvent != undefined) {
     document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
     // detects when the user falls using free fall
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
-      document.getElementById("changethis").innerHTML = "WOWOWOWOWOWOWW";
+      document.getElementById("changethis").innerHTML = "w0w0w0w0w";
 
 
       FB.ui({
         method: 'share',
         mobile_iframe: true,
-        quote: 'help me pls'
-        href: 'http://www.health.gov.au/internet/publications/publishing.nsf/Content/dff-toc~dff-surroundings~dff-surroundings-getup',
+        href: 'https://developers.facebook.com/docs/',
       }, function(response){});
+
 
         
       }
