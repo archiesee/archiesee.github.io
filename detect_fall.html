@@ -64,6 +64,13 @@ if (window.DeviceMotionEvent != undefined) {
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "i should speak now";
 
+
+      if ('speechSynthesis' in window) {
+          // You're good to go!
+      } else {
+          alert("NO SUPPORT :((");
+      }
+
       var msg = new SpeechSynthesisUtterance('Hello World');
       window.speechSynthesis.speak(msg);
         // post help message w info link
