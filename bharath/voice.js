@@ -114,6 +114,10 @@ function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
+console.log("Begin main js execution");
+
+navigator.getUserMedia(constraints, successCallback, errorCallback);
+
 function takeSnapshot() {
   photoContext.drawImage(video, 0, 0, photo.width, photo.height);
 
