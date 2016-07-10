@@ -102,13 +102,16 @@ if (window.DeviceMotionEvent != undefined) {
       while (i <= 1) {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
+
         } else {
           alert('Geolocation is not supported in your browser');
         }
 
 
         emailjs.init("user_IJpoXBYOn5233GTxFg9dv");
-        emailjs.send("gmail","fallen",{latitude: latitude, longitude: longitude})
+        emailjs.send("gmail","fallen",{
+          lat: "some lat", 
+          longi: "some longi"})
         .then(function(response) {
            window.alert("SUCCESS. status=%d, text=%s", response.status, response.text);
         }, function(err) {
