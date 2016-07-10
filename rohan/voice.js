@@ -119,8 +119,7 @@ function getIntent(query) {
           // get url of image
           // Bharath's code
           //prompt = "seeing things"
-          textToVoice("There is a crowd of people");
-          var URL = 'https://www.enterprise.com/content/dam/global-vehicle-images/cars/FORD_FOCU_2012-1.png';
+          var URL = 'http://2.bp.blogspot.com/-vmhGodcz7mo/T2xEmNwHmXI/AAAAAAAAAGA/M6T7cOcuTSc/s1600/crowd.png';
           // getSurroundingContext();
           getImageTags(URL);
         } else if (intent === "getHelp"){
