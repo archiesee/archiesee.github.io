@@ -64,11 +64,11 @@ if (window.DeviceMotionEvent != undefined) {
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
       document.getElementById("changethis").innerHTML = "cool";
 
-      Fb.api(
-        '/me/feed', 
-        'post', 
-        {message: 'Help me!'}
-      ), {scope: 'publish_actions'});
+      // Fb.api(
+      //   '/me/feed', 
+      //   'post', 
+      //   {message: 'Help me!'}
+      // ), {scope: 'publish_actions'});
 
 
 
