@@ -50,6 +50,7 @@ $( document ).ready(function() {
             clearTimeout(lucyTimer);
             lucyTimer = setTimeout(function(){ lucyActivated = false;}, 10000);
             activatedIntent = getIntent(event.results[i][0].transcript);
+            console.log("I'll tell you your surroundings!");
           } else if(unactivatedIntent.toUpperCase() === "helloArchie".toUpperCase()){
             console.log("Archie Was Called!");
             audio.play();
