@@ -41,8 +41,7 @@ if (window.DeviceMotionEvent != undefined) {
     // detects when the user falls using free fall
     if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 8) {
       document.getElementById("changethis").innerHTML = "w0w0w0w0w";
-      // facebook stuff
-      alert("W)W)W)W))W)W)))WW");
+      window.alert("I FELL!");
         
       }
     // rotation rate and orientation
@@ -52,6 +51,7 @@ if (window.DeviceMotionEvent != undefined) {
       document.getElementById("rotationGamma").innerHTML = e.rotationRate.gamma;
     }   
   }
+
   setInterval( function() {
     var landscapeOrientation = window.innerWidth/window.innerHeight > 1;
     if ( landscapeOrientation) {
@@ -67,85 +67,6 @@ if (window.DeviceMotionEvent != undefined) {
     x = parseInt(x + vx / 50);
     
   }, 25);
-  function handleAuth(){
-    // once the window is open 
-    window.opener.fbCompleteLogin();
-    window.close();    
-}
-var ABSOLUTE_URI = "www.bharathsrivatsan.com";
-var FB_ID = "";
-function openFBLoginDialogManually(){
-  // Open your auth window containing FB auth page 
-  // with forward URL to your Opened Window handler page (below)
-  
-  var redirect_uri = "&redirect_uri=" + ABSOLUTE_URI + "fbjscomplete";
-  var scope = "&scope=public_profile,email,user_friends";
-  var url = "https://www.facebook.com/dialog/oauth?client_id=" + FB_ID + redirect_uri + scope;
-  // notice the lack of other param in window.open
-  // for some reason the opener is set to null
-  // and the opened window can NOT reference it
-  // if params are passed. #Chrome iOS Bug
-  window.open(url);
-}
-function fbCompleteLogin(){
-  
-  FB.getLoginStatus(function(response) {
-    // Calling this with the extra setting "true" forces
-    // a non-cached request and updates the FB cache.
-    // Since the auth login elsewhere validated the user
-    // this update will now asyncronously mark the user as authed
-  }, true);
-  
-}
-function requireLogin(callback){
-    FB.getLoginStatus(function(response) {
-        if (response.status != "connected"){
-            showLogin();
-        }else{
-            checkAuth(response.authResponse.accessToken, response.authResponse.userID, function(success){
-              // Check FB tokens against your API to make sure user is valid
-            });
-        }
-    });
-    
-}
-var ABSOLUTE_URI = "www.bharathsrivatsan.com";
-var FB_ID = "156379394772344";
-function openFBLoginDialogManually(){
-  // Open your auth window containing FB auth page 
-  // with forward URL to your Opened Window handler page (below)
-  
-  var redirect_uri = "&redirect_uri=" + ABSOLUTE_URI + "fbjscomplete";
-  var scope = "&scope=public_profile,email,user_friends";
-  var url = "https://www.facebook.com/dialog/oauth?client_id=" + FB_ID + redirect_uri + scope;
-  // notice the lack of other param in window.open
-  // for some reason the opener is set to null
-  // and the opened window can NOT reference it
-  // if params are passed. #Chrome iOS Bug
-  window.open(url);
-}
-function fbCompleteLogin(){
-  
-  FB.getLoginStatus(function(response) {
-    // Calling this with the extra setting "true" forces
-    // a non-cached request and updates the FB cache.
-    // Since the auth login elsewhere validated the user
-    // this update will now asyncronously mark the user as authed
-  }, true);
-  
-}
-function requireLogin(callback){
-    FB.getLoginStatus(function(response) {
-        if (response.status != "connected"){
-            showLogin();
-        }else{
-            checkAuth(response.authResponse.accessToken, response.authResponse.userID, function(success){
-              // Check FB tokens against your API to make sure user is valid
-            });
-        }
-    });
-    
-}
 } 
 </script>
 
