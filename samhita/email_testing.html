@@ -7,10 +7,8 @@
 <body>
 	<h1>Auto Email Testing</h1>
 
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script type="text/javascript">
-
-	for (var i = 1; i <= 1; i++) {
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js">
+for (var i = 1; i <= 1; i++) {
       emailjs.init("user_IJpoXBYOn5233GTxFg9dv");
       emailjs.send("gmail","fallen",{name: "James", notes: "Check this out!"})
       .then(function(response) {
@@ -19,8 +17,6 @@
          window.alert("FAILED. error=", err);
       });
     }
-
-   
 </script>
 
 
