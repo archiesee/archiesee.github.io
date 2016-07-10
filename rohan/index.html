@@ -10,11 +10,125 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<img src="dog.png" height="200" width="200" class="centered">
+	<img src="dog.png" height="200" width="200" class="centered" onclick="speak();">
 <!--   <div>
     <input type="text" id="imgurl" placeholder="Image URL"/>
     <button onclick="run(document.getElementById('imgurl').value)">Get tags!</button>
   </div> 
   <div id="tags"></div> -->
+
+  <div class="template">
+    <p>Fall: <span id="changethis"></span></p>
+
+    <ul>
+      <li>acceleration x: <span id="accelerationX"></span>g</li>
+      <li>acceleration y: <span id="accelerationY"></span>g</li>
+      <li>acceleration z: <span id="accelerationZ"></span>g</li>
+      <li>rotation alpha: <span id="rotationAlpha"></span>degree</li>
+      <li>rotation beta: <span id="rotationBeta"></span>degree</li>
+      <li>rotation gamma: <span id="rotationGamma"></span>degree</li>
+    </ul>
+  </div>
+
+
+
+
+
+
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+  <script>
+  function speak() {
+      if ('speechSynthesis' in window) {
+      var sentence = new SpeechSynthesisUtterance();
+      var voices = window.speechSynthesis.getVoices();
+      for(var i = 0; i < voices.length; i++) {
+            if(voices[i]['name'] == "Alex"){
+              sentence.voice = voices[i];
+            }
+        }
+      sentence.pitch = 0.5;
+      sentence.rate = 1;
+      sentence.volume = 10;
+      sentence.text = "Hello World";
+      window.speechSynthesis.speak(sentence);
+    } else {
+      window.alert("Oops! Your browser does not support HTML SpeechSynthesis.");
+    }
+  }
+  </script>
+
+  <script type="text/javascript">
+
+  var x = 0, y = 0,
+      vx = 0, vy = 0,
+    ax = 0, ay = 0;
+
+  var i = 1;
+  var location_coords = {lat: "", lon: ""};
+
+  function showPosition(position) {
+    location_coords.lat = position.coords.latitude;
+    location_coords.lon = position.coords.longitude;  
+  }
+
+  if (window.DeviceMotionEvent != undefined) {
+    window.ondevicemotion = function(e) {
+      ax = event.accelerationIncludingGravity.x * 5;
+      ay = event.accelerationIncludingGravity.y * 5;
+      document.getElementById("accelerationX").innerHTML = e.accelerationIncludingGravity.x;
+      document.getElementById("accelerationY").innerHTML = e.accelerationIncludingGravity.y;
+      document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
+      // detects when the user falls using free fall
+      if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 5) {
+        
+
+        while (i <= 1) {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+
+          } else {
+            alert('Geolocation is not supported in your browser');
+          }
+
+
+          emailjs.init("user_IJpoXBYOn5233GTxFg9dv");
+          emailjs.send("gmail","fallen",{
+            lat: String(location_coords.lat), 
+            longi: String(location_coords.lon)})
+          .then(function(response) {}, function(err) {
+             window.alert("FAILED. error=", err);
+          });
+          i = i+1;
+        }
+          
+        }
+      // rotation rate and orientation
+      if ( e.rotationRate ) {
+        document.getElementById("rotationAlpha").innerHTML = e.rotationRate.alpha;
+        document.getElementById("rotationBeta").innerHTML = e.rotationRate.beta;
+        document.getElementById("rotationGamma").innerHTML = e.rotationRate.gamma;
+      }   
+    }
+    setInterval( function() {
+      var landscapeOrientation = window.innerWidth/window.innerHeight > 1;
+      if ( landscapeOrientation) {
+        vx = vx + ay;
+        vy = vy + ax;
+      } else {
+        vy = vy - ay;
+        vx = vx + ax;
+      }
+      vx = vx * 0.98;
+      vy = vy * 0.98;
+      y = parseInt(y + vy / 50);
+      x = parseInt(x + vx / 50);
+      
+    }, 25);
+  }
+
+  </script>
+
+
 </body>
 </html>
